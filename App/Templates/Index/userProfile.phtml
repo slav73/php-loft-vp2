@@ -1,0 +1,12 @@
+<?
+/** @var modelUser $user */
+$user = $this->user;
+?>
+<? if($user): ?>
+    <div>
+        <?=$user->getId();?>
+        <?=$user->getName();?>
+    </div>
+<? else:?>
+Пользователь не найден
+<? endif; ?>

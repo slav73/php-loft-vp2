@@ -1,0 +1,16 @@
+<?
+/** @var App\Model\User[] $users */
+$users = $this->users;
+?>
+<div>
+    Это шаблон <?=__FILE__;?><br>
+</div>
+
+Пользователи:<br>
+<? if($users):?>
+    <? foreach ($users as $user): ?>
+        <div>
+            <?=$user->getName();?>
+        </div>
+    <? endforeach;?>
+<? endif;?>

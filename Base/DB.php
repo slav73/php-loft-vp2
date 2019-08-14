@@ -1,11 +1,12 @@
 <?php
+namespace Base;
 
 class DB 
 {
     private $_pdo;
     private $_log = [];
     private static $_instance;
-    private function __construct()
+    public function __construct()
     {
 
     }
@@ -48,7 +49,6 @@ class DB
         if(!$ret) {
             $errorInfo = $prepared->errorInfo();
             //trigger_error("{$errorInfo[0]}#{$errorInfo[1]}: " . $errorInfo[2]);
-            var_dump($params);
             return -1;
         }
         $affectedRows = $prepared->rowCount();
@@ -102,6 +102,19 @@ class DB
             }
         }
     }
+
+    public function getLogHTML()
+    {
+        if (!$this->_log) {
+            return '';
+        }
+        $res = '';
+        foreach ($this->_log as $elem) {
+            $res = $elem[1] . ': ' . $elem[0] . ' (' . $elem[2] . ') [' . $elem[3] . ']' . "\n";
+        }
+        return '<pre>' . $res .'</pre>';
+    }
+
     private function getClearQuery(\PDOStatement $prepared, $params = []) 
     {
         $query = $prepared->queryString;
