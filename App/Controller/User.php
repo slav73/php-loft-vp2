@@ -15,16 +15,17 @@ class User extends BaseController
     public function loginAction()
     {
         $this->_render = false;
-        echo __METHOD__;
+        echo __METHOD__ ;
     }
 
     public function registerAction()
     {
         $this->_render = false;
-        $data['name'] = $_GET['name'] ?? '';
         $data['email'] = $_GET['email'] ?? '';
         $data['password'] = $_GET['password'] ?? '';
+        $data['password2'] = $_GET['password2'] ?? '';
 
+        // var_dump($data);
         $model = new userModel();
         $model->loadData($data, true);
 

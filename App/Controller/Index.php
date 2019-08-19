@@ -14,9 +14,21 @@ class Index extends BaseController
         // echo Context::i()->getDb()->getLogHTML();
     }
 
+    public function registerAction()
+    {
+        //$user = User::get(2);
+        //$this->view->users = $users;
+        $user = User::getByEmail($_GET);
+    }
+
     public function mainAction()
     {
         echo 'main';
+    }
+
+    public function loginAction()
+    {
+        $user = User::getByEmail($_GET);
     }
 
     function userProfileAction()

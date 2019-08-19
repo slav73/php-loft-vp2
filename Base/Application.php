@@ -15,18 +15,18 @@ class Application
         $request = new Request();
         $dispatcher = new Dispatcher();
         $db = new DB();
-
         $this->_context->setRequest($request);
         $this->_context->setDispatcher($dispatcher);
         $this->_context->setDb($db);
     }
-
+    
     public function run()
     {
         try {
             $this->_init();
             $this->_context->getDispatcher()->dispatch();
             $dispatcher = $this->_context->getDispatcher();
+            var_dump( $_SERVER['REQUEST_URI']);
 
             $controllerFileName = 'App\Controller\\' . $dispatcher->getControllerName();
             if (!class_exists($controllerFileName)) {
